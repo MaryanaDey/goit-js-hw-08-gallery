@@ -86,7 +86,6 @@ const galleryItems = [
   galleryItems.map(
     (item, index) =>(
 
-
       galleryEl.innerHTML += `<li class="gallery__item">
     <a class="gallery__link"
     href="${item.original}">
@@ -99,13 +98,7 @@ const galleryItems = [
    </li>`)
   );
   
- ;
- 
- //galleryItems.map(element => {
- // dataSources.push(element.target.src);
-// console.log(element);
-  
-//})
+
 
 //открытие модалки по клику на img
 
@@ -117,7 +110,6 @@ const galleryItems = [
       return
     }
     openmodal.classList.add('is-open');
-
 
     imageRef.src=evt.target.dataset.source;
     imageRef.alt=evt.target.alt;
@@ -133,11 +125,7 @@ const galleryItems = [
     openmodal.classList.remove('is-open');
      }
  
-   }  
-
-
-
-
+   } ; 
 
 
    //закрытие по кнопке ESC
@@ -148,27 +136,11 @@ const galleryItems = [
      imageRef.src="";
       imageRef.alt="";
       return
-   
   }
-
 });
 
 
-//Прокрутка фото
-
-
-
-
-
-//function leftClick(currentIndex){
-//  let nextIndex = currentIndex - 1;
-//  if (nextIndex == -1) {
- //   nextIndex = dataSources.length - 1;
-  //}
-  //modalContent.src = dataSources[nextIndex];
-//};
-
-
+//Прокрутка фото 
 
 function rightClick(currentIndex) {
   let nextIndex = currentIndex ? currentIndex : 0;
