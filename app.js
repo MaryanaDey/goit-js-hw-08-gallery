@@ -83,22 +83,54 @@ const galleryItems = [
   //функция проверки клика по карточке и добавления класса 'is-open'
 
 
-  galleryItems.map(
-    (item, index) =>(
+  const imageMurkup = createImagesList(galleryItems);
+  galleryEl.insertAdjacentHTML("beforeend", imageMurkup )
+ galleryEl.addEventListener('click',createImagesList)
 
-      galleryEl.innerHTML += `<li class="gallery__item">
-    <a class="gallery__link"
-    href="${item.original}">
-    <img class="gallery__image"
-    src="${item.preview}"
-    data-source="${item.original}"
-    data-id="${index}"
-    alt="${item.description}"/>
-        </a>
-   </li>`)
-  );
+  //функция проверки клика по карточке и добавления класса 'is-open'
+
+    //Добавила на gallery фото
+    function createImagesList(galleryItems){
   
+  return galleryItems 
+  .map(({original, description })=> {
+  return `
+  <li class="gallery__item">
+   <a
+   class="gallery__link"
+   href="${original}"
+   >
+   <img
+    class="gallery__image"
+    src="${original}"
+    data-source="${original}"
+    alt="${description}"
+    >
+    </a>
+   </li>
+   `;
+   })
+   .join('');
+   }
 
+
+
+
+
+   //galleryItems.map(
+   // (item, index) =>(
+
+   //   galleryEl.innerHTML += `<li class="gallery__item">
+   // <a class="gallery__link"
+   // href="${item.original}">
+   // <img class="gallery__image"
+   // src="${item.preview}"
+   // data-source="${item.original}"
+   // data-id="${index}"
+   // alt="${item.description}"/>
+   //     </a>
+  // </li>`)
+  // );
 
 //открытие модалки по клику на img
 
@@ -121,10 +153,11 @@ const galleryItems = [
    function onButtotClick (e){
      if(e.target.nodeName==="BUTTON"){
       imageRef.src="";
-    imageRef.alt="";
-    openmodal.classList.remove('is-open');
+      imageRef.alt="";
+      openmodal.classList.remove('is-open');
+      //window.removeEventListener('click', onButtotClick);
      }
- 
+    
    } ; 
 
 
