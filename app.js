@@ -83,56 +83,22 @@ const galleryItems = [
   //функция проверки клика по карточке и добавления класса 'is-open'
 
 
-  const imageMurkup = createImagesList(galleryItems);
-  galleryEl.insertAdjacentHTML("beforeend", imageMurkup )
- galleryEl.addEventListener('click',createImagesList)
+   galleryItems.map(
+    (item, index) =>(
 
-  //функция проверки клика по карточке и добавления класса 'is-open'
+      galleryEl.innerHTML += `<li class="gallery__item">
+    <a class="gallery__link"
+    href="${item.original}">
+    <img class="gallery__image"
+    src="${item.preview}"
+    data-source="${item.original}"
+    data-id="${index}"
+    alt="${item.description}"/>
+       </a>
+   </li>`)
+   );
 
-    //Добавила на gallery фото
-    function createImagesList(galleryItems){
-  
-  return galleryItems 
-  .map(({original, description })=> {
-  return `
-  <li class="gallery__item">
-   <a
-   class="gallery__link"
-   href="${original}"
-   >
-   <img
-    class="gallery__image"
-    src="${original}"
-    data-source="${original}"
-    alt="${description}"
-    >
-    </a>
-   </li>
-   `;
-   })
-   .join('');
-   }
-
-
-
-
-
-   //galleryItems.map(
-   // (item, index) =>(
-
-   //   galleryEl.innerHTML += `<li class="gallery__item">
-   // <a class="gallery__link"
-   // href="${item.original}">
-   // <img class="gallery__image"
-   // src="${item.preview}"
-   // data-source="${item.original}"
-   // data-id="${index}"
-   // alt="${item.description}"/>
-   //     </a>
-  // </li>`)
-  // );
-
-//открытие модалки по клику на img
+ //открытие модалки по клику на img
 
 
   function onClickImage(evt) {
@@ -150,39 +116,138 @@ const galleryItems = [
        
    //закрытие модалкипо клику button
 
-   function onButtotClick (e){
-     if(e.target.nodeName==="BUTTON"){
-      imageRef.src="";
-      imageRef.alt="";
-      openmodal.classList.remove('is-open');
-      //window.removeEventListener('click', onButtotClick);
-     }
+     function onButtotClick (e){
+       if(e.target.nodeName==="BUTTON"){
+       imageRef.src="";
+       imageRef.alt="";
+       openmodal.classList.remove('is-open');
+       //window.removeEventListener('click', onButtotClick);
+      }
     
-   } ; 
+     } ; 
 
 
-   //закрытие по кнопке ESC
+    //закрытие по кнопке ESC
     window.addEventListener('keydown', e => {
-    //currentIndex= dataSourse.indexOf(modalContent.src);
+               //currentIndex = dataSourse.indexOf(modalContent.src);
     if(e.key === "Escape") {
       lightboxRef.classList.remove('is-open');
-     imageRef.src="";
+      imageRef.src="";
       imageRef.alt="";
       return
-  }
-});
+     }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+ //const imageMurkup = createImagesList(galleryItems);
+   //galleryEl.insertAdjacentHTML("beforeend", imageMurkup )
+   //galleryEl.addEventListener('click',createImagesList)
+
+  
+
+   //Добавила на gallery фото
+   //function createImagesList(galleryItems) {
+  
+   //return galleryItems
+   //.map(({preview, original, description }) => {
+   // return `
+   //<li class="gallery__item">
+   //<a
+   // class="gallery__link"
+   // href="${original}"
+   // >
+   // <img
+    //class="gallery__image"
+   // src="${preview}"
+   // data-source="${original}"
+    //alt="${description}"
+    // />
+    //</a>
+    //</li>
+    //`;
+    //})
+    //.join('');
+  //}
+
+
+
+    
+//function onKeydown(e) {
+  //if (e.code === "Escape") {
+  //  lightboxRef.classList.remove("is-open");
+   // galleryEl.removeAttribute("keypress", key);
+    //setAttributeOnImage();
+  //}
+//}
+
+//function setAttributeOnImage(src = "", alt = "", id = "") {
+  // position = refs.image.dataset.id;
+
+  //imageRef.dataset.id = id;
+  //imageRef.src = src;
+  //imageRef.alt = alt;
+ 
+
+  // refs.overlay.classList.toggle("is-open");
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Прокрутка фото 
 
-function rightClick(currentIndex) {
-  let nextIndex = currentIndex ? currentIndex : 0;
+//function rightClick(currentIndex) {
+  //let nextIndex = currentIndex ? currentIndex : 0;
 
-  if (nextIndex < galleryItems.length - 1) {
-    nextIndex += 1;
-     } else {
-      nextIndex = 0;
-    }
-  imageRef.src = galleryItems[nextIndex].original;
-  imageRef.alt = galleryItems[newIndex].alt;
-};
+  //if (nextIndex < galleryItems.length - 1) {
+   // nextIndex += 1;
+    // } else {
+    //  nextIndex = 0;
+    //}
+  //imageRef.src = galleryItems[nextIndex].original;
+  //imageRef.alt = galleryItems[newIndex].alt;
+//};
